@@ -1337,6 +1337,9 @@
       * --------------------------------------------------*/
      $(function(){
         $('#de-loader').prepend($('<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'));
+        setTimeout(function() {
+            jQuery('#de-loader').fadeOut(300);
+        }, 150);
          'use strict';
          modeRtl();         
          $(".jarallax").jarallax();

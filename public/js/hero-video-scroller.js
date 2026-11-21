@@ -242,8 +242,19 @@
         }
       }
 
-      // Start preloading waves after a brief moment to prioritize initial layout & paint
-      setTimeout(loadNextBatch, 80);
+      // Start preloading waves after page load (or 1.2s fallback) so initial page paint is instant
+      let batchStarted = false;
+      function startBatchPreload() {
+        if (batchStarted) return;
+        batchStarted = true;
+        loadNextBatch();
+      }
+      if (document.readyState === 'complete') {
+        setTimeout(startBatchPreload, 100);
+      } else {
+        window.addEventListener('load', () => setTimeout(startBatchPreload, 100), { once: true });
+        setTimeout(startBatchPreload, 1200);
+      }
     }
 
     // Calculate current scroll progress through the hero track (0.0 to 1.0)
