@@ -446,6 +446,16 @@ footer img.logo-footer {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
 }
 
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d2a073;
+  box-shadow: 0 0 10px rgba(210, 160, 115, 0.9);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .hero-title-top {
   display: block !important;
   font-size: clamp(34px, 5.2vw, 68px) !important;
@@ -1630,22 +1640,25 @@ footer.luxury-footer {
    ================================================================ */
 #services-scroll-section {
   position: relative !important;
-  min-height: auto !important;
-  padding: 90px 0 !important;
+  min-height: 260vh;
+  padding: 0 !important;
   background-color: #faf7f2 !important;
 }
 
 .services-pin-sticky {
-  position: relative !important;
-  height: auto !important;
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  height: 100dvh !important;
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   background-color: transparent !important;
   border: none !important;
-  padding: 0 !important;
+  padding: 72px 0 24px 0 !important;
   box-sizing: border-box !important;
   z-index: 5 !important;
 }
@@ -1690,20 +1703,9 @@ footer.luxury-footer {
 
 .services-track-container {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden !important;
   position: relative;
   padding: 10px 0 20px 0;
-}
-
-@media (max-width: 991px) {
-  .services-track-container {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .services-track-container::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .services-horizontal-track {
@@ -1712,12 +1714,11 @@ footer.luxury-footer {
   padding-left: max(24px, calc((100vw - 1280px) / 2 + 15px));
   padding-right: 60px;
   will-change: transform;
-  transition: transform 0.08s linear;
 }
 
 @media (max-width: 991px) {
   .services-horizontal-track {
-    transform: none !important;
+    gap: 16px;
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -2427,19 +2428,19 @@ textarea.form-control,
    ================================================================ */
 @media (max-width: 991px) {
   #section-intro.hero-scroll-track {
-    height: 200vh !important;
+    height: 220vh !important;
     min-height: auto !important;
     padding: 0 !important;
   }
 
-  /* Compact Hero Content on Mobile: Significantly reduced padding & vertical space so the kitchen room is clearly visible */
+  /* Beautiful Framed Mobile Hero Card over the Kitchen Walkthrough Video */
   .hero-scrolly-overlay {
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
     text-align: center !important;
-    padding: 24px 16px 14px !important;
+    padding: 76px 16px 64px !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
@@ -2454,91 +2455,180 @@ textarea.form-control,
     justify-content: center !important;
     text-align: center !important;
     width: 100% !important;
-    max-width: 360px !important;
+    max-width: 356px !important;
     margin: 0 auto !important;
+    padding: 26px 20px 24px !important;
+    background: linear-gradient(160deg, rgba(16, 14, 12, 0.64) 0%, rgba(16, 14, 12, 0.44) 100%) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(210, 160, 115, 0.3) !important;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.48) !important;
   }
 
-  /* Bigger, bolder, impactful title */
+  .hero-tag-badge {
+    font-size: 10px !important;
+    letter-spacing: 1.6px !important;
+    padding: 5px 13px !important;
+    margin-bottom: 14px !important;
+    background: rgba(210, 160, 115, 0.16) !important;
+    border-color: rgba(210, 160, 115, 0.42) !important;
+    color: #f3cfa4 !important;
+  }
+
+  /* Bold, crisp main headline */
   .hero-title-top {
-    font-size: clamp(26px, 7.2vw, 34px) !important;
+    font-size: clamp(27px, 7.5vw, 35px) !important;
     font-weight: 800 !important;
-    letter-spacing: 0.8px !important;
+    letter-spacing: 0.6px !important;
     text-transform: uppercase !important;
     color: #ffffff !important;
     text-align: center !important;
-    margin: 0 0 3px 0 !important;
-    line-height: 1.1 !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 4px 20px rgba(0, 0, 0, 0.9) !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.08 !important;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85) !important;
   }
 
-  /* High contrast, radiant, fully legible accent title (not dark bronze blending into wood!) */
+  /* Warm champagne gold accent subtitle with editorial divider */
   .hero-title-accent {
-    font-size: clamp(17px, 4.6vw, 22px) !important;
-    font-weight: 700 !important;
-    letter-spacing: 1.2px !important;
+    font-size: clamp(15px, 4.2vw, 19px) !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
     text-transform: uppercase !important;
-    color: #fff2df !important;
+    color: #e6b88a !important;
     text-align: center !important;
-    margin: 0 0 8px 0 !important;
-    line-height: 1.15 !important;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.98), 0 4px 18px rgba(0, 0, 0, 0.95), 0 0 24px rgba(0, 0, 0, 0.85) !important;
+    margin: 0 0 14px 0 !important;
+    padding-bottom: 12px !important;
+    position: relative !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85) !important;
   }
 
-  /* Compact description with minimal vertical space */
+  .hero-title-accent::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 48px !important;
+    height: 2px !important;
+    background: linear-gradient(90deg, transparent, #d2a073, transparent) !important;
+  }
+
+  /* Crisp, readable description */
   .hero-desc {
-    font-size: 12px !important;
-    line-height: 1.45 !important;
-    color: rgba(255, 255, 255, 0.96) !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: rgba(255, 255, 255, 0.92) !important;
     text-align: center !important;
     max-width: 310px !important;
-    margin: 0 auto 12px auto !important;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95) !important;
+    margin: 0 auto 18px auto !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
   }
 
   .hero-actions {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 10px !important;
     width: 100% !important;
     margin: 0 auto !important;
   }
 
   .hero-actions .btn-main {
-    width: auto !important;
-    min-width: 125px !important;
-    max-width: 48% !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
     text-align: center !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 8px 16px !important;
+    padding: 11px 14px !important;
     font-size: 11.5px !important;
-    letter-spacing: 0.8px !important;
+    letter-spacing: 0.9px !important;
     margin: 0 !important;
+    white-space: nowrap !important;
   }
 
   /* Seamless cinematic overlay blending top & bottom smoothly with #0e0d0b */
   .hero-cinematic-overlay {
     background: 
-      linear-gradient(180deg, #0e0d0b 0%, rgba(14, 13, 11, 0.35) 9%, rgba(14, 13, 11, 0) 18%, rgba(14, 13, 11, 0) 82%, rgba(14, 13, 11, 0.35) 91%, #0e0d0b 100%) !important;
+      linear-gradient(180deg, #0e0d0b 0%, rgba(14, 13, 11, 0.35) 9%, rgba(14, 13, 11, 0) 18%, rgba(14, 13, 11, 0) 80%, rgba(14, 13, 11, 0.45) 90%, #0e0d0b 100%) !important;
   }
 
-  /* Completely remove all HUD controls on mobile view (Skip, Walkthrough %, time, play button) */
-  .hero-hud,
-  .hero-hud-bar,
+  /* Minimal Mobile Walkthrough HUD: Keep progress bar & sleek scroll cue, hide desktop clutter */
+  .hero-hud {
+    display: block !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0 16px 18px !important;
+    z-index: 8 !important;
+    pointer-events: none !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(14, 13, 11, 0.75) 100%) !important;
+  }
+
+  .hero-progress-track {
+    display: block !important;
+    width: 100% !important;
+    height: 2px !important;
+    background: rgba(255, 255, 255, 0.16) !important;
+    margin-bottom: 10px !important;
+    overflow: hidden !important;
+  }
+
+  #hero-progress-fill {
+    display: block !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, #d2a073, #f3cfa4) !important;
+    transition: width 0.08s linear !important;
+  }
+
+  .hero-hud-bar {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+
+  #hero-scroll-hint {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 14px !important;
+    background: rgba(20, 18, 16, 0.72) !important;
+    border: 1px solid rgba(210, 160, 115, 0.35) !important;
+    backdrop-filter: blur(8px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+  }
+
+  #hero-scroll-hint.scrolled-past {
+    opacity: 0 !important;
+    transform: translateY(8px) !important;
+  }
+
+  #hero-scroll-hint .hero-scroll-mouse {
+    width: 14px !important;
+    height: 22px !important;
+    border-width: 1.5px !important;
+  }
+
+  #hero-scroll-hint .hero-scroll-label {
+    font-size: 10.5px !important;
+    letter-spacing: 1.2px !important;
+    color: #f3cfa4 !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+  }
+
   .hero-hud-left,
-  .hero-hud-center,
   .hero-hud-right,
-  .hero-progress-track,
-  #hero-progress-fill,
   #hero-skip-btn,
   #hero-chapter-num,
   #hero-chapter-time,
-  #hero-playpause-btn,
-  #hero-scroll-hint {
+  #hero-playpause-btn {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -2550,11 +2640,6 @@ textarea.form-control,
 
   .quote-modal-card {
     padding: 30px 20px !important;
-  }
-
-  .services-track-container {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
   }
 
   /* Subpage Banner/Cover Clearance: Prevents logo & hamburger overlap on mobile */
@@ -2625,6 +2710,390 @@ textarea.form-control,
   }
   section.text-light.jarallax {
     padding: 60px 0 !important;
+  }
+}
+
+/* ================================================================
+   16. Our Trusted Brands Section (index.html & about.html)
+   ================================================================ */
+.trusted-brands-section {
+  background: #ffffff !important;
+  border-top: 1px solid rgba(52, 31, 22, 0.08);
+  padding: 72px 0 !important;
+}
+
+.trusted-brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.trusted-brand-card {
+  flex: 0 1 calc(20% - 16px);
+  min-width: 170px;
+  height: 112px;
+  background: #ffffff;
+  border: 1px solid rgba(52, 31, 22, 0.1);
+  box-shadow: 0 6px 20px rgba(52, 31, 22, 0.04);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.trusted-brand-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(210, 160, 115, 0.65);
+  box-shadow: 0 14px 30px rgba(52, 31, 22, 0.09);
+}
+
+.trusted-brand-card img {
+  max-width: 100%;
+  max-height: 68px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .trusted-brands-section {
+    padding: 54px 0 !important;
+  }
+  .trusted-brand-card {
+    flex: 0 1 calc(33.333% - 14px);
+    min-width: 150px;
+    height: 98px;
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  .trusted-brands-section {
+    padding: 44px 0 !important;
+  }
+  .trusted-brands-grid {
+    gap: 12px;
+  }
+  .trusted-brand-card {
+    flex: 0 1 calc(50% - 6px);
+    min-width: 0;
+    height: 86px;
+    padding: 12px 14px;
+  }
+  .trusted-brand-card img {
+    max-height: 52px;
+  }
+}
+
+/* ================================================================
+   17. Gallery Mobile-Friendly Refinements (gallery.html)
+   ================================================================ */
+@media (max-width: 767px) {
+  .gallery-filters-container {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 6px !important;
+    gap: 6px !important;
+  }
+
+  .gallery-filter-btn {
+    font-size: 12px !important;
+    padding: 7px 12px !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  .gallery-item.col-lg-6 .hover > .relative.overflow-hidden.rounded-1,
+  .gallery-item.col-lg-4 .hover > .relative.overflow-hidden.rounded-1 {
+    height: 260px !important;
+  }
+
+  .gallery-item.col-lg-6 img.hover-scale-1-2,
+  .gallery-item.col-lg-4 img.hover-scale-1-2 {
+    height: 260px !important;
+  }
+
+  .gallery-item .w-75 {
+    width: 88% !important;
+  }
+
+  .gallery-item .p-4 {
+    padding: 16px !important;
+  }
+
+  .gallery-item h2.fs-32 {
+    font-size: 21px !important;
+    line-height: 1.25 !important;
+  }
+
+  .gallery-item h2.fs-24 {
+    font-size: 19px !important;
+    line-height: 1.25 !important;
+  }
+
+  .gallery-item .extra-text {
+    margin: 14px !important;
+  }
+
+  .gallery-item .extra-text .bg-blur {
+    font-size: 11.5px !important;
+    padding: 5px 10px !important;
+    margin-right: 0 !important;
+  }
+
+  .render-reality-card {
+    height: 265px !important;
+  }
+
+  .render-reality-header {
+    padding: 9px 12px !important;
+  }
+
+  .render-reality-header h4 {
+    font-size: 13px !important;
+  }
+
+  .render-reality-grid {
+    height: calc(265px - 42px) !important;
+  }
+}
+
+/* ================================================================
+   18. Hero Scroll-Triggered Feature Hotspots (Desktop & Mobile)
+   ================================================================ */
+.hero-hotspots-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 6 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
+
+.hero-hotspot {
+  position: absolute !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.94);
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.hero-hotspot.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hero-hotspot-dot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d2a073;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 16px rgba(210, 160, 115, 0.95), 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.hero-hotspot-dot span {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(210, 160, 115, 0.85);
+  animation: heroHotspotPulse 2s ease-out infinite;
+}
+
+@keyframes heroHotspotPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.hero-hotspot-stem {
+  position: absolute;
+  background: linear-gradient(180deg, #f3cfa4, #d2a073);
+  box-shadow: 0 0 10px rgba(210, 160, 115, 0.6);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.hero-hotspot-card {
+  position: absolute;
+  width: 245px;
+  padding: 12px 15px;
+  background: rgba(16, 14, 12, 0.84);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(210, 160, 115, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.hero-hotspot-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: #e6b88a;
+  margin-bottom: 3px;
+}
+
+.hero-hotspot-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+
+.hero-hotspot-sub {
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hotspot 1: Waterfall Marble Island (stem goes UP) */
+.hero-hotspot-1 {
+  top: 66%;
+  left: 52%;
+}
+.hero-hotspot-1 .hero-hotspot-stem {
+  width: 1.5px;
+  height: 46px;
+  left: 50%;
+  bottom: 18px;
+  transform-origin: bottom center;
+  transform: translateX(-50%) scaleY(0);
+}
+.hero-hotspot-1.is-active .hero-hotspot-stem {
+  transform: translateX(-50%) scaleY(1);
+}
+.hero-hotspot-1 .hero-hotspot-card {
+  left: 50%;
+  bottom: 64px;
+  transform: translateX(-50%);
+}
+
+/* Hotspot 2: Stove & Cabinetry (stem goes UP) */
+.hero-hotspot-2 {
+  top: 60%;
+  left: 48%;
+}
+.hero-hotspot-2 .hero-hotspot-stem {
+  width: 1.5px;
+  height: 46px;
+  left: 50%;
+  bottom: 18px;
+  transform-origin: bottom center;
+  transform: translateX(-50%) scaleY(0);
+}
+.hero-hotspot-2.is-active .hero-hotspot-stem {
+  transform: translateX(-50%) scaleY(1);
+}
+.hero-hotspot-2 .hero-hotspot-card {
+  left: 50%;
+  bottom: 64px;
+  transform: translateX(-50%);
+}
+
+/* Hotspot 3: Blum Soft-Close Hinges on Open Upper Cabinet (stem goes RIGHT/DOWN) */
+.hero-hotspot-3 {
+  top: 28%;
+  left: 36%;
+}
+.hero-hotspot-3 .hero-hotspot-stem {
+  width: 46px;
+  height: 1.5px;
+  left: 18px;
+  top: 50%;
+  transform-origin: left center;
+  transform: translateY(-50%) scaleX(0);
+}
+.hero-hotspot-3.is-active .hero-hotspot-stem {
+  transform: translateY(-50%) scaleX(1);
+}
+.hero-hotspot-3 .hero-hotspot-card {
+  left: 64px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 991px) {
+  .hero-hotspot-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hero-hotspot-card {
+    width: min(236px, 72vw);
+    max-width: calc(100vw - 32px);
+    padding: 9px 12px;
+  }
+  .hero-hotspot-tag {
+    font-size: 9px;
+    letter-spacing: 1.4px;
+  }
+  .hero-hotspot-title {
+    font-size: 13px;
+  }
+  .hero-hotspot-sub {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  /* Hotspot 1: Island (centered over the island countertop on portrait mobile) */
+  .hero-hotspot-1 {
+    top: 59%;
+    left: 50%;
+  }
+  .hero-hotspot-1 .hero-hotspot-stem {
+    height: 36px;
+    bottom: 16px;
+  }
+  .hero-hotspot-1 .hero-hotspot-card {
+    bottom: 52px;
+  }
+
+  /* Hotspot 2: Stove & Cabinetry */
+  .hero-hotspot-2 {
+    top: 57%;
+    left: 50%;
+  }
+  .hero-hotspot-2 .hero-hotspot-stem {
+    height: 36px;
+    bottom: 16px;
+  }
+  .hero-hotspot-2 .hero-hotspot-card {
+    bottom: 52px;
+  }
+
+  /* Hotspot 3: Blum Soft-Close Hinges (stem goes DOWN, card stays safely inside viewport) */
+  .hero-hotspot-3 {
+    top: 38%;
+    left: 33%;
+  }
+  .hero-hotspot-3 .hero-hotspot-stem {
+    width: 1.5px;
+    height: 36px;
+    left: 50%;
+    top: 16px;
+    transform-origin: top center;
+    transform: translateX(-50%) scaleY(0);
+  }
+  .hero-hotspot-3.is-active .hero-hotspot-stem {
+    transform: translateX(-50%) scaleY(1);
+  }
+  .hero-hotspot-3 .hero-hotspot-card {
+    left: 50%;
+    top: 52px;
+    transform: translateX(-28%);
   }
 }
 

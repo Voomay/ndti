@@ -133,35 +133,35 @@ function initServicesHorizontalScroll() {
   function trackLoop() {
     const diff = targetTranslate - currentTranslate;
     if (Math.abs(diff) > 0.5) {
-      currentTranslate += diff * 0.2;
-      track.style.transform = `translateX(-${currentTranslate}px)`;
+      currentTranslate += diff * 0.22;
+      track.style.transform = `translate3d(-${currentTranslate.toFixed(2)}px, 0, 0)`;
       requestAnimationFrame(trackLoop);
     } else {
       currentTranslate = targetTranslate;
-      track.style.transform = `translateX(-${currentTranslate}px)`;
+      track.style.transform = `translate3d(-${currentTranslate.toFixed(2)}px, 0, 0)`;
       isTrackLoopRunning = false;
     }
   }
 
+  function syncSectionHeight() {
+    const viewportWidth = window.innerWidth;
+    const isMobile = viewportWidth < 992;
+    const endPadding = isMobile ? 20 : 80;
+    const maxTranslate = Math.max(0, track.scrollWidth - viewportWidth + endPadding);
+    const scrollDistance = Math.max(window.innerHeight * 1.15, maxTranslate * 1.1);
+    section.style.height = `${Math.round(window.innerHeight + scrollDistance)}px`;
+    return { maxTranslate, scrollDistance };
+  }
+
   function updateTrackPosition() {
-    if (window.innerWidth < 992) {
-      track.style.transform = 'none';
-      return;
-    }
-
+    const { maxTranslate, scrollDistance } = syncSectionHeight();
     const rect = section.getBoundingClientRect();
-    const totalScrollable = section.offsetHeight - window.innerHeight;
 
-    if (totalScrollable <= 0) return;
+    if (scrollDistance <= 0) return;
 
     // Scrolled amount inside section
     const scrolled = -rect.top;
-    const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
-
-    // Calculate maximum translation distance
-    const trackWidth = track.scrollWidth;
-    const viewportWidth = window.innerWidth;
-    const maxTranslate = Math.max(0, trackWidth - viewportWidth + 80);
+    const progress = Math.max(0, Math.min(1, scrolled / scrollDistance));
 
     targetTranslate = progress * maxTranslate;
 
@@ -218,16 +218,10 @@ function initServicesHorizontalScroll() {
   if (btnPrev) {
     btnPrev.addEventListener('click', (e) => {
       e.preventDefault();
-      if (window.innerWidth < 992) {
-        const container = section.querySelector('.services-track-container');
-        if (container) container.scrollBy({ left: -320, behavior: 'smooth' });
-        return;
-      }
-      const rect = section.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const step = window.innerHeight * 0.45;
+      const step = window.innerWidth < 992 ? 320 : window.innerHeight * 0.45;
       window.scrollTo({
-        top: Math.max(0, scrollTop + rect.top - step),
+        top: Math.max(0, scrollTop - step),
         behavior: 'smooth',
       });
     });
@@ -236,16 +230,12 @@ function initServicesHorizontalScroll() {
   if (btnNext) {
     btnNext.addEventListener('click', (e) => {
       e.preventDefault();
-      if (window.innerWidth < 992) {
-        const container = section.querySelector('.services-track-container');
-        if (container) container.scrollBy({ left: 320, behavior: 'smooth' });
-        return;
-      }
       const rect = section.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const step = window.innerHeight * 0.45;
+      const step = window.innerWidth < 992 ? 320 : window.innerHeight * 0.45;
+      const baseTop = rect.top > 0 ? scrollTop + rect.top : scrollTop;
       window.scrollTo({
-        top: scrollTop + rect.top + step,
+        top: baseTop + step,
         behavior: 'smooth',
       });
     });

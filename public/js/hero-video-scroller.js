@@ -35,6 +35,7 @@
     const playPauseBtn = document.getElementById('hero-playpause-btn');
     const playPauseIcon = document.getElementById('hero-playpause-icon');
     const heroOverlay = document.querySelector('.hero-scrolly-overlay');
+    const hotspots = Array.from(document.querySelectorAll('.hero-hotspot'));
 
     const TOTAL_FRAMES = 300; // 10.0 seconds at 30 fps
     const FPS = 30;
@@ -141,6 +142,20 @@
           heroOverlay.style.opacity = '0';
           heroOverlay.style.transform = 'translateY(-20px)';
           heroOverlay.style.pointerEvents = 'none';
+        }
+      }
+
+      // Activate/deactivate scroll-triggered kitchen feature hotspots
+      if (hotspots.length) {
+        for (let i = 0; i < hotspots.length; i++) {
+          const spot = hotspots[i];
+          const start = parseFloat(spot.getAttribute('data-start') || '0');
+          const end = parseFloat(spot.getAttribute('data-end') || '1');
+          if (clampedProg >= start && clampedProg <= end) {
+            spot.classList.add('is-active');
+          } else {
+            spot.classList.remove('is-active');
+          }
         }
       }
 
